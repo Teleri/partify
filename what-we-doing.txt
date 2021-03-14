@@ -1,0 +1,16 @@
+Tech
+- React
+
+- Web chat with auth
+  - Require sign in to chat
+  - Require sign in to spotify to host
+
+- Host can control the "session" to close the chat, and delete playlist (or save it)
+
+- Spotify web player cast via spotify api
+  - Playlist created at the start
+  - Users can add to playlist
+  - Host can amend playlist via spotify
+
+- Components
+  - 
