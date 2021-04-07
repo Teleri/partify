@@ -4,15 +4,22 @@ import { db } from "../services/firebase"
 
 class Chat extends Component {
   constructor(props) {
-    super(props);
+    super()
     this.state = {
       user: auth().currentUser,
       chats: [],
       content: '',
       readError: null,
       writeError: null
+      
     };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
+  
+  
+
   async componentDidMount() {
     this.setState({ readError: null });
     try {
@@ -27,10 +34,47 @@ class Chat extends Component {
       this.setState({ readError: error.message });
     }
   }
+
+  async handleSubmit(event) {
+    event.preventDefault();
+    this.setState({ writeError: null });
+    try {
+      await db.ref("chats").push({
+        content: this.state.content,
+        timestamp: Date.now(),
+        uid: this.state.user.uid
+      });
+      this.setState({ content: '' });
+    } catch (error) {
+      this.setState({ writeError: error.message });
+    }
+  }
+
+  handleChange(event) {
+    this.setState({
+    content: event.target.value
+    });
+  }
+
   render() {
     return (
-      <div> Fuffa </div>
-    )
+    <div>
+      <div className="chats">
+        {this.state.chats.map(chat => {
+          return <p key={chat.timestamp}>{chat.content}</p>
+        })}
+      </div>
+      {/* {# message form #} */}
+      <form onSubmit={this.handleSubmit}>
+        <input onChange={this.handleChange} value={this.state.content}></input>
+        {this.state.error ? <p>{this.state.writeError}</p> : null}
+        <button type="submit">Send</button>
+      </form>
+      <div>
+        Login in as: <strong>{this.state.user.email}</strong>
+      </div>
+    </div>
+  );
   }
 }
 
