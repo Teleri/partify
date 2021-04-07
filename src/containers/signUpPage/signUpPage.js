@@ -83,6 +83,10 @@ class signUpPage extends React.Component {
           <button type="button" onClick={this.githubSignIn}>
             Sign up with GitHub
           </button>
+          <p>Or</p>
+          <button onClick={this.googleSignIn} type="button">
+            Sign up with Google
+          </button>
           <p>
             Already have an account? <Link to="/login">Login</Link>
           </p>
