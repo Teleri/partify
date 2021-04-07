@@ -61,7 +61,7 @@ class Chat extends Component {
     <div>
       <div className="chats">
         {this.state.chats.map(chat => {
-          return <p key={chat.timestamp}>{chat.content}</p>
+          return <p key={chat.timestamp}> {this.state.user.email}: {chat.content} </p>
         })}
       </div>
       {/* {# message form #} */}
