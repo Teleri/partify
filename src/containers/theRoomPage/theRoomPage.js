@@ -3,7 +3,7 @@ import { auth } from "../../services/firebase";
 import { db } from "../../services/firebase";
 import Navbar from "../../components/navbar/navBar";
 
-class Chat extends Component {
+class theRoomPage extends Component {
   constructor(props) {
     super();
     this.state = {
@@ -85,4 +85,4 @@ class Chat extends Component {
   }
 }
 
-export default Chat;
+export default theRoomPage;
