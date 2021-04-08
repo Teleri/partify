@@ -1,6 +1,6 @@
 import React from "react";
 import { auth } from "../../services/firebase";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
 import "../../styles/shared/navbar.scss";
 
 function Navbar() {
