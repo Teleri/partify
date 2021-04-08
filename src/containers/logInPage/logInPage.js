@@ -1,10 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { signup, signInWithGoogle, signInWithGitHub } from "../../helpers/auth";
+import { signin, signInWithGoogle, signInWithGitHub } from "../../helpers/auth";
 
-class signUpPage extends React.Component {
-  constructor(props) {
-    super(props);
+class logInPage extends Component {
+  constructor() {
+    super();
     this.state = {
       error: null,
       email: "",
@@ -26,7 +26,7 @@ class signUpPage extends React.Component {
     event.preventDefault();
     this.setState({ error: "" });
     try {
-      await signup(this.state.email, this.state.password);
+      await signin(this.state.email, this.state.password);
     } catch (error) {
       this.setState({ error: error.message });
     }
@@ -51,12 +51,9 @@ class signUpPage extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <h1>
-            Sign Up to
-            <Link to="/"> Partify</Link>
-          </h1>
-          <p>Fill in the form below to create an account.</p>
+        <form autoComplete="off" onSubmit={this.handleSubmit}>
+          <h1>Login</h1>
+          <p>Fill in the form below to login to your account.</p>
           <div>
             <input
               placeholder="Email"
@@ -64,7 +61,7 @@ class signUpPage extends React.Component {
               type="email"
               onChange={this.handleChange}
               value={this.state.email}
-            ></input>
+            />
           </div>
           <div>
             <input
@@ -73,22 +70,22 @@ class signUpPage extends React.Component {
               onChange={this.handleChange}
               value={this.state.password}
               type="password"
-            ></input>
+            />
           </div>
           <div>
             {this.state.error ? <p>{this.state.error}</p> : null}
-            <button type="submit">Sign up</button>
+            <button type="submit">Login</button>
           </div>
-          <hr></hr>
+          <p>You can also log in with any of these services</p>
+          <button type="button" onClick={this.googleSignIn}>
+            Sign in with Google
+          </button>
           <button type="button" onClick={this.githubSignIn}>
-            Sign up with GitHub
+            Sign in with GitHub
           </button>
-          <p>Or</p>
-          <button onClick={this.googleSignIn} type="button">
-            Sign up with Google
-          </button>
+          <hr />
           <p>
-            Already have an account? <Link to="/login">Login</Link>
+            Don't have an account? <Link to="/signup">Sign up</Link>
           </p>
         </form>
       </div>
@@ -96,4 +93,4 @@ class signUpPage extends React.Component {
   }
 }
 
-export default signUpPage;
+export default logInPage;

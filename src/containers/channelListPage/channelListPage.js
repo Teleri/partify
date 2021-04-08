@@ -1,15 +1,17 @@
 import { Component } from "react";
 import Navbar from "../../components/navbar/navBar";
 
-class landingPage extends Component {
+class channelListPage extends Component {
   render() {
     return (
       <div>
         <Navbar />
-        LANDING PAGE
+        <div>
+          <p>Channel List Page</p>
+        </div>
       </div>
     );
   }
 }
 
-export default landingPage;
+export default channelListPage;
