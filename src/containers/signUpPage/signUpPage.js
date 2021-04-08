@@ -54,7 +54,7 @@ class signUpPage extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <h1>
             Sign Up to
-            <Link to="/">Partify</Link>
+            <Link to="/"> Partify</Link>
           </h1>
           <p>Fill in the form below to create an account.</p>
           <div>
