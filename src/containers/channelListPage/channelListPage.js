@@ -1,9 +1,17 @@
 import { Component } from "react";
+import Navbar from "../../components/navbar/navBar";
 
-class ChannelListPage extends Component {
+class channelListPage extends Component {
   render() {
-    return "Channel List Page";
+    return (
+      <div>
+        <Navbar />
+        <div>
+          <p>Channel List Page</p>
+        </div>
+      </div>
+    );
   }
 }
 
-export default ChannelListPage;
+export default channelListPage;
