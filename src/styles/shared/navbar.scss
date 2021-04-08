@@ -8,6 +8,23 @@
   display: flex;
 }
 
+.logged-in-links a {
+  text-decoration: none;
+  color: #000;
+}
+
 .nav-links {
   padding: 10px;
+}
+
+.nav-links a {
+  color: #000;
+  text-decoration: none;
+}
+
+a {
+  font-size: 20px;
+  &:hover {
+    color: rgb(74, 75, 74);
+  }
 }
