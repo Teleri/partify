@@ -10,6 +10,7 @@ import { auth } from "./services/firebase";
 import landingPage from "./containers/landingPage/landingPage";
 import signUpPage from "./containers/signUpPage/signUpPage";
 import theRoomPage from "./containers/theRoomPage/theRoomPage";
+import logInPage from "./containers/logInPage/logInPage";
 
 function PrivateRoute({ component: Component, authenticated, ...rest }) {
   return (
@@ -46,7 +47,6 @@ function PublicRoute({ component: Component, authenticated, ...rest }) {
 class App extends Component {
   state = {
     authenticated: false,
-    loading: true,
   };
 
   componentDidMount() {
@@ -54,23 +54,17 @@ class App extends Component {
       if (user) {
         this.setState({
           authenticated: true,
-          loading: false,
         });
       } else {
         this.setState({
           authenticated: false,
-          loading: false,
         });
       }
     });
   }
 
   render() {
-    return this.state.loading === true ? (
-      <div>
-        <span>Loading...</span>
-      </div>
-    ) : (
+    return (
       <Router>
         <Switch>
           <Route exact path="/" component={landingPage} />
@@ -83,6 +77,11 @@ class App extends Component {
             path="/signup"
             authenticated={this.state.authenticated}
             component={signUpPage}
+          />
+          <PublicRoute
+            path="/login"
+            authenticated={this.state.authenticated}
+            component={logInPage}
           />
         </Switch>
       </Router>
